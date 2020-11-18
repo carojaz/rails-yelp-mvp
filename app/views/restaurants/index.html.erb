@@ -1,2 +1,16 @@
-<h1>Restaurants#index</h1>
-<p>Find me in app/views/restaurants/index.html.erb</p>
+<div class="container">
+  <h1>Restaurants</h1>
+  <div class="row">
+  <% @restaurants.each do |restaurant|%>
+      <div class="card col-4" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= restaurant.name %></h5>
+          <h6 class="card-subtitle mb-2 text-muted"> <%= restaurant.category %> </h6>
+          <p class="card-text"> <%= restaurant.address + restaurant.phone_number %> </p>
+          <%= link_to "Visit || ", restaurant_path(restaurant)  %>
+          <%= link_to "Write your review", new_restaurant_review_path(restaurant) %>
+        </div>
+      </div>
+  <% end %>
+  </div>
+</div>

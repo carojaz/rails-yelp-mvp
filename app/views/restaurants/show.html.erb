@@ -1,2 +1,32 @@
-<h1>Restaurants#show</h1>
-<p>Find me in app/views/restaurants/show.html.erb</p>
+<div class="container">
+  <div class="card text-center">
+    <div class="card-header">
+      <%= @restaurant.name %>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title"> Call us : <%= @restaurant.phone_number %> </h5>
+      <p class="card-text"> <%= @restaurant.category.capitalize %> </p>
+      <p class="card-text"> <%= @restaurant.address  %> </p>
+      <%= link_to "review us", new_restaurant_review_path(@restaurant), class: "btn btn-info"  %>
+    </div>
+  </div>
+  <br>
+  <div class="card text-center">
+    <div class="card-header">
+      Reviews
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">
+        <ul class="list-group">
+          <% if @restaurant.reviews.count == 0 %>
+            <%= "No review yet" %>
+          <% else %>
+            <% @restaurant.reviews.each do |review| %>  <li class="list-group-item"> <%= "*" * review.rating + "  " + review.content.capitalize%> </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </h5>
+    </div>
+  </div>
+
+</div>
